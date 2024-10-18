@@ -1,30 +1,10 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
     "configurations": [
-        
         {
-            "type": "firefox",
-            "request": "attach",
-            "name": "Attach"
-        },
-        
-
-        {
-            "type": "hmmm",
+            "type": "chrome",
+            "name": "http://127.0.0.1:3000/index.html",
             "request": "launch",
-            "name": "Debug HMMM",
-            "program": "${index.html}",
-            "isBinary": false
-        },
-        {
-            "type": "hmmm",
-            "request": "launch",
-            "name": "Debug HMMM (Binary)",
-            "program": "${file}",
-            "isBinary": true
+            "url": "http://127.0.0.1:3000/index.html"
         }
     ]
 }

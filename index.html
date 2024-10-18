@@ -4,31 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sjeakx-blast</title>
-    <link rel="stylesheet" href="style.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
-            position: relative; /* Allow positioning of child elements */
-            overflow: hidden; /* Prevent scrollbars from appearing */
         }
 
         h1 {
             font-size: 36px;
-            color: #fff; /* Changed text color to white for better contrast */
+            color: #333;
             margin-bottom: 40px;
-            position: relative; /* Adjusts layering */
-            z-index: 1; /* Ensure it appears above the particles */
         }
 
         .icon-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 20px; /* Space between buttons */
             margin-bottom: 40px;
-            position: relative; /* Adjusts layering */
-            z-index: 1; /* Ensure it appears above the particles */
         }
 
         .icon-button {
@@ -36,7 +29,7 @@
             border: none;
             cursor: pointer;
             display: flex;
-            flex-direction: column; /* Stack icon and text */
+            flex-direction: column; /* Stack icon and text vertically */
             align-items: center; /* Center the icon and text */
         }
 
@@ -46,64 +39,13 @@
         }
 
         .icon-button:hover img {
-            filter: brightness(1.2);
+            filter: brightness(1.2); /* Brightness effect on hover */
         }
 
         .icon-name {
             margin-top: 10px; /* Space between icon and name */
-            font-size: 16px;
-            color: #fff; /* Changed text color to white for better contrast */
-        }
-
-        /* Particle animation styles */
-        .container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            pointer-events: none; /* Prevent interaction with particles */
-            overflow: hidden;
-            z-index: 0; /* Ensure particles are below other elements */
-        }
-
-        .circle-container {
-            position: absolute;
-            pointer-events: none; /* Prevent interaction with particles */
-            animation: float 6s infinite ease-in-out;
-        }
-
-        .circle {
-            width: 15px;
-            height: 15px;
-            background-color: rgba(255, 255, 255, 0.8); /* White circles */
-            border-radius: 50%;
-            position: absolute;
-            animation: scale 6s infinite ease-in-out;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-20px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scale {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.5);
-            }
-            100% {
-                transform: scale(1);
-            }
+            font-size: 16px; /* Font size for the name */
+            color: #333; /* Text color */
         }
     </style>
 </head>
@@ -113,34 +55,17 @@
 
     <div class="icon-container">
         <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
-            <img src="https://img.icons8.com/?size=100&id=101130&format=png&color=000000" alt="">
-            <span class="icon-name">Proxy</span> <!-- Button name -->
-        </a>
-        <a href="https://macvg-sjeakx.vercel.app/" target="_blank" class="icon-button">
+            <img src="https://img.icons8.com/?size=100&id=101130&format=png&color=000000" alt="Connect to Sjeakx">
+            <span class="icon-name">Proxy</span> <!-- Name for the first button -->
+        
+            <a href="https://macvg-sjeakx.vercel.app/" target="_blank" class="icon-button">
             <img src="https://img.icons8.com/?size=100&id=bgcDOSDKAuGQ&format=png&color=000000" alt="">
-            <span class="icon-name">Games</span> <!-- Updated button name -->
-        </a>
-    </div>
+            <span class="icon-name">macvg</Visit Apple Arcade> <!-- Name for the second button -->
 
-    <!-- Particle animation -->
-    <div class="container">
-        <!-- You can duplicate this block for more circles or create them dynamically -->
-        <div class="circle-container" style="top: 20%; left: 10%; animation-delay: 0s;">
-            <div class="circle"></div>
-        </div>
-        <div class="circle-container" style="top: 40%; left: 30%; animation-delay: 1s;">
-            <div class="circle"></div>
-        </div>
-        <div class="circle-container" style="top: 70%; left: 60%; animation-delay: 2s;">
-            <div class="circle"></div>
-        </div>
-        <div class="circle-container" style="top: 30%; left: 80%; animation-delay: 3s;">
-            <div class="circle"></div>
-        </div>
-        <div class="circle-container" style="top: 10%; left: 50%; animation-delay: 4s;">
-            <div class="circle"></div>
-        </div>
-        <!-- Add more circles as needed -->
+            <a href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHZpZXdCb3g9IjAgMCAxMjgwIDcyMCI+Cgk8dGl0bGU+R29vZ2xlPC90aXRsZT4KCTxmb3JlaWduT2JqZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjcyMCI+CgkJPGVtYmVkIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiBzcmM9Imh0dHBzOi8vbmV0dGxld2ViLmNvbS8iIHR5cGU9InRleHQvcGxhaW4iIHdpZHRoPSIxMjYwIiBoZWlnaHQ9IjcwMCIgLz4KCTwvZm9yZWlnbk9iamVjdD4KPC9zdmc+/" target="_blank" class="icon-button">
+            <img src="https://img.icons8.com/?size=100&id=bgcDOSDKAuGQ&format=png&color=000000" alt="">
+            <span class="icon-name">macvg</Visit Apple Arcade> <!-- Name for the second button -->
+        </a>
     </div>
 
 </body>
