@@ -39,6 +39,16 @@
             filter: brightness(1.2);
         }
 
+        /* Slightly transparent home icon */
+        .icon-button.transparent img {
+            opacity: 0.6; /* 60% opacity */
+        }
+
+        .icon-button.transparent:hover img {
+            opacity: 1; /* Fully opaque on hover */
+            filter: brightness(1.2);
+        }
+
         .bar-button {
             background-color: #4CAF50; /* Green */
             color: white;
@@ -68,6 +78,10 @@
         <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
             <img src="https://img.icons8.com/ios-glyphs/60/settings.png" alt="Settings Icon">
         </a>
+        <!-- Slightly transparent home icon -->
+        <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button transparent">
+            <img src="https://img.icons8.com/ios-glyphs/60/home.png" alt="Transparent Home Icon">
+        </a>
     </div>
 
     <button class="bar-button" onclick="window.location.href='https://sjeakxweb.vercel.app/'">
@@ -76,3 +90,4 @@
 
 </body>
 </html>
+
