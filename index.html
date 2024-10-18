@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Icon Button</title>
+    <title>Icon Buttons and Long Bar Button</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+        }
+
+        .icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
         .icon-button {
@@ -25,45 +32,39 @@
         .icon-button:hover img {
             filter: brightness(1.2);
         }
-    </style>
-</head>
-<body>
 
-    <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
-        <img src="https://img.icons8.com/ios-glyphs/60/home.png" alt="Home Icon">
-    </a>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Icon Button</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .icon-button {
-            background-color: transparent;
+        .bar-button {
+            background-color: #4CAF50; /* Green */
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
             border: none;
             cursor: pointer;
+            border-radius: 5px;
+            width: 60%;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
-        .icon-button img {
-            width: 50px;
-            height: 50px;
-        }
-
-        .icon-button:hover img {
-            filter: brightness(1.2);
+        .bar-button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-    <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
-        <img src="https://img.icons8.com/ios-glyphs/60/home.png" alt="Home Icon">
-    </a> 
-    
+    <div class="icon-container">
+        <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
+            <img src="https://img.icons8.com/ios-glyphs/60/home.png" alt="Home Icon">
+        </a>
+        <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
+            <img src="https://img.icons8.com/ios-glyphs/60/settings.png" alt="Settings Icon">
+        </a>
+    </div>
+
+    <button class="bar-button" onclick="window.location.href='https://sjeakxweb.vercel.app/'">
+        Long Bar Button
+    </button>
+
 </body>
 </html>
