@@ -9,12 +9,17 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin-top: 50px;
+            background-color: #4CAF50; /* Set the background color */
+            position: relative; /* Allow positioning of child elements */
+            overflow: hidden; /* Prevent scrollbars from appearing */
         }
 
         h1 {
             font-size: 36px;
-            color: #333;
+            color: #fff; /* Changed text color to white for better contrast */
             margin-bottom: 40px;
+            position: relative; /* Adjusts layering */
+            z-index: 1; /* Ensure it appears above the particles */
         }
 
         .icon-container {
@@ -22,12 +27,17 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 40px;
+            position: relative; /* Adjusts layering */
+            z-index: 1; /* Ensure it appears above the particles */
         }
 
         .icon-button {
             background-color: transparent;
             border: none;
             cursor: pointer;
+            display: flex;
+            flex-direction: column; /* Stack icon and text */
+            align-items: center; /* Center the icon and text */
         }
 
         .icon-button img {
@@ -39,31 +49,61 @@
             filter: brightness(1.2);
         }
 
-        /* Slightly transparent home icon */
-        .icon-button.transparent img {
-            opacity: 0.6; /* 60% opacity */
+        .icon-name {
+            margin-top: 10px; /* Space between icon and name */
+            font-size: 16px;
+            color: #fff; /* Changed text color to white for better contrast */
         }
 
-        .icon-button.transparent:hover img {
-            opacity: 1; /* Fully opaque on hover */
-            filter: brightness(1.2);
+        /* Particle animation styles */
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none; /* Prevent interaction with particles */
+            overflow: hidden;
+            z-index: 0; /* Ensure particles are below other elements */
         }
 
-        .bar-button {
-            background-color: #4CAF50; /* Green */
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            width: 60%;
-            max-width: 400px;
-            margin: 0 auto;
+        .circle-container {
+            position: absolute;
+            pointer-events: none; /* Prevent interaction with particles */
+            animation: float 6s infinite ease-in-out;
         }
 
-        .bar-button:hover {
-            background-color: #45a049;
+        .circle {
+            width: 15px;
+            height: 15px;
+            background-color: rgba(255, 255, 255, 0.8); /* White circles */
+            border-radius: 50%;
+            position: absolute;
+            animation: scale 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.5);
+            }
+            100% {
+                transform: scale(1);
+            }
         }
     </style>
 </head>
@@ -73,14 +113,35 @@
 
     <div class="icon-container">
         <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
-            <img src="https://icons8.com/icon/101130/connect" alt="">
+            <img src="https://img.icons8.com/?size=100&id=101130&format=png&color=000000" alt="">
+            <span class="icon-name">Proxy</span> <!-- Button name -->
         </a>
         <a href="https://macvg-sjeakx.vercel.app/" target="_blank" class="icon-button">
-            <img src="https://icons8.com/icon/bgcDOSDKAuGQ/apple-arcade" alt="">
+            <img src="https://img.icons8.com/?size=100&id=bgcDOSDKAuGQ&format=png&color=000000" alt="">
+            <span class="icon-name">Games</span> <!-- Updated button name -->
         </a>
+    </div>
 
+    <!-- Particle animation -->
+    <div class="container">
+        <!-- You can duplicate this block for more circles or create them dynamically -->
+        <div class="circle-container" style="top: 20%; left: 10%; animation-delay: 0s;">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-container" style="top: 40%; left: 30%; animation-delay: 1s;">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-container" style="top: 70%; left: 60%; animation-delay: 2s;">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-container" style="top: 30%; left: 80%; animation-delay: 3s;">
+            <div class="circle"></div>
+        </div>
+        <div class="circle-container" style="top: 10%; left: 50%; animation-delay: 4s;">
+            <div class="circle"></div>
+        </div>
+        <!-- Add more circles as needed -->
     </div>
 
 </body>
 </html>
-
