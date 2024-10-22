@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sjeakx Blast</title>
+    <style>
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h2 id="accessPrompt">Enter Access Code</h2>
+<input type="password" id="codeInput" placeholder="Enter code here">
+<button onclick="checkCode()">Submit</button>
+
+<div id="content">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sjeakx-blast</title>
     <style>
         body {
@@ -114,6 +131,24 @@
             alert('paste in newtab like a url and bookmark it if it does not work dissable ublock!');
         }
     </script>
+
+</div>
+
+<script>
+    function checkCode() {
+        const codeInput = document.getElementById('codeInput').value;
+        const correctCode = 'cloisteria'; // Change this to your desired code
+
+        if (codeInput === correctCode) {
+            document.getElementById('content').style.display = 'block';
+            document.getElementById('accessPrompt').style.display = 'none'; // Hide the prompt
+            document.getElementById('codeInput').style.display = 'none';
+            event.target.style.display = 'none';
+        } else {
+            alert('Incorrect code. Please try again.');
+        }
+    }
+</script>
 
 </body>
 </html>
