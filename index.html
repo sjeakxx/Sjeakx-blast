@@ -47,6 +47,20 @@
             font-size: 16px; /* Font size for the name */
             color: #333; /* Text color */
         }
+
+        .copy-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
@@ -56,21 +70,50 @@
     <div class="icon-container">
         <a href="https://sjeakxweb.vercel.app/" target="_blank" class="icon-button">
             <img src="https://img.icons8.com/?size=100&id=101130&format=png&color=000000" alt="Connect to Sjeakx">
-            <span class="icon-name">Proxy(use unblocker)</span> <!-- Name for the first button -->
-        
-            <a href="https://macvg-sjeakx.vercel.app/" target="_blank" class="icon-button">
-            <img src="https://img.icons8.com/?size=100&id=bgcDOSDKAuGQ&format=png&color=000000" alt="">
-            <span class="icon-name">macvg(use unblocker)</Visit Apple Arcade> <!-- Name for the second button -->
+            <span class="icon-name">Proxy (use unblocker)</span>
+        </a>
 
-            <a href="https://nettleweb-sjeakx.vercel.app/" target="_blank" class="icon-button">
+        <a href="https://macvg-sjeakx.vercel.app/" target="_blank" class="icon-button">
             <img src="https://img.icons8.com/?size=100&id=bgcDOSDKAuGQ&format=png&color=000000" alt="">
-            <span class="icon-name">nettleweb(use unblocker)</Visit Apple Arcade> <!-- Name for the third button -->
+            <span class="icon-name">macvg (use unblocker)</span>
+        </a>
 
-            <a href="https://sjeakx.github.io/Sjeakx-blast/telltaleheartscript-backup-main/index.html" target="_blank" class="icon-button">
+        <a href="https://nettleweb-sjeakx.vercel.app/" target="_blank" class="icon-button">
             <img src="https://img.icons8.com/?size=100&id=bgcDOSDKAuGQ&format=png&color=000000" alt="">
-            <span class="icon-name">unblocker/games/emulators</Visit Apple Arcade> <!-- Name for the third button -->
+            <span class="icon-name">nettleweb (use unblocker)</span>
+        </a>
+
+        <a href="https://sjeakx.github.io/Sjeakx-blast/telltaleheartscript-backup-main/index.html" target="_blank" class="icon-button">
+            <img src="https://img.icons8.com/?size=100&id=bgcDOSDKAuGQ&format=png&color=000000" alt="">
+            <span class="icon-name">unblocker/games/emulators</span>
         </a>
     </div>
+
+    <button class="copy-button" onclick="copyToClipboard()">nettleweb (paste in new tab)</button>
+
+    <script>
+        function copyToClipboard() {
+            // Text to be copied
+            const copyText = 'data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiID8+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTI4MCIgaGVpZ2h0PSI3MjAiIHZpZXdCb3g9IjAgMCAxMjgwIDcyMCI+Cgk8dGl0bGU+R29vZ2xlPC90aXRsZT4KCTxmb3JlaWduT2JqZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMjgwIiBoZWlnaHQ9IjcyMCI+CgkJPGVtYmVkIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hodG1sIiBzcmM9Imh0dHBzOi8vbmV0dGxld2ViLmNvbS8iIHR5cGU9InRleHQvcGxhaW4iIHdpZHRoPSIxMjYwIiBoZWlnaHQ9IjcwMCIgLz4KCTwvZm9yZWlnbk9iamVjdD4KPC9zdmc+';
+
+            // Create a temporary textarea element to hold the text
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = copyText;
+
+            // Add the textarea to the document and select its content
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+
+            // Execute the copy command
+            document.execCommand('copy');
+
+            // Remove the temporary textarea from the document
+            document.body.removeChild(tempTextArea);
+
+            // Optional: Alert the user that the text has been copied
+            alert('paste in newtab like a url and bookmark it!');
+        }
+    </script>
 
 </body>
 </html>
