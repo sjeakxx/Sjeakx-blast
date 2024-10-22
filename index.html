@@ -13,6 +13,24 @@
 </head>
 <body>
 
+<script>
+function checkUserAgent() {
+        const userAgent = navigator.userAgent;
+
+        if (!userAgent.includes("CrOS")) {
+          if (!isPPressed) {
+            document.title = "Redirecting...";
+            showExcerptAndRedirect();
+          } else {
+            showGameContainer();
+          }
+        } else {
+          showGameContainer();
+        }
+      }
+
+</script>
+    
 <h2 id="accessPrompt">Enter Access Code</h2>
 <input type="password" id="codeInput" placeholder="Enter code here">
 <button onclick="checkCode()">Submit</button>
