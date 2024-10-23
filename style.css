@@ -1,3 +1,11 @@
+.chrome-only { display:none}
+
+body {
+  background-color: cornflowerblue;
+  
+
+}
+
 /* Simple CSS to change button appearance */
 .button {
   background-color: #4CAF50; /* Button background color */
@@ -10,6 +18,3 @@
   transition: background-color 0.5s; /* Add a transition effect */
 }
 
-.button:hover {
-  background-color: #3e8e6; /* Change button background color on hover */
-}
