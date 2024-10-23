@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-   <link rel="stylesheet" type="text/css" href="https://sjeakx.github.io/style.css">
+      <link href="./style.css" type="text/css" rel="stylesheet">
         <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sjeakx Blast</title>
@@ -14,27 +14,95 @@
 <body>
 
 <script>
+
+function checkOS() {
+var userAgent = navigator.userAgent;
+if (userAgent.indexOf("CrOS") = 1) {
+
+  document.getElementByID("chrome-only").style.display="block"
+
+} else {
+
+  document.getElementByID("chrome-only").style.display="none";
+
+  }
+
+}
+
+window.onload = checkOS;
+</script>
+
+<script>
+  let isPPressed = localStorage.getItem("pushing p") === "false";
+
 function checkUserAgent() {
-        const userAgent = navigator.userAgent;
+  const userAgent = navigator.userAgent;
 
-        if (!userAgent.includes("CrOS")) {
-          if (!isPPressed) {
-            document.title = "Redirecting...";
-            showExcerptAndRedirect();
-          } else {
-            showGameContainer();
-          }
-        } else {
-          showGameContainer();
-        }
-      }
+  if (!userAgent.includes("CrOS")) {
+    if (!isPPressed) {
+      window.location.href = "https://sjeakx.github.io/Sjeakx-blast/tell-tale-heart-packet"
+      showExcerptAndRedirect();
+    } else {
+      showGameContainer();
+    }
+  } else {
+    showGameContainer();
+  }
+}
 
+function showGameContainer() {
+  document.querySelector(".game-container").classList.remove("hidden");
+  document.querySelector(".header").classList.remove("hidden");
+}
+
+function showExcerptAndRedirect() {
+  document.querySelector(".header").classList.add("hidden");
+  document.querySelector(".game-container").classList.add("hidden");
+
+  const excerpt =
+    "It’s true! Yes, I have been ill—very ill. But why will you say that I am mad? The disease had sharpened my senses—not destroyed—not dulled them. Above all was the sense of hearing acute. I heard all things in the heaven and in the earth. I heard many things in hell. How, then, am I mad? Hearken! and observe how healthily—how calmly I tell you the whole story.\n\n" +
+    "It is impossible to say how first the idea entered my brain; but once conceived, it haunted me. You should have seen me. I would have laughed at what you would call the disease. I could not sleep. I had not lost my mind; I had but to use my own; I had to make it part of me...";
+
+  const excerptContainer = document.createElement("div");
+  excerptContainer.className = "excerpt-container";
+  excerptContainer.innerText = excerpt;
+
+  document.body.appendChild(excerptContainer);
+
+  setTimeout(() => {
+    if (!isPPressed) {
+      window.location.href = "https://sjeakx.github.io/Sjeakx-blast/tell-tale-heart-packet";
+    } else {
+      showGameContainer();
+    }
+  }, 5000);
+}
+
+window.onload = checkUserAgent;
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "P" || event.key === "p") {
+    event.preventDefault();
+    isPPressed = true;
+    localStorage.setItem("pushing p", "true");
+    alert("You pressed the P key, but no redirect will happen.");
+
+    const excerptContainer = document.querySelector(".excerpt-container");
+    if (excerptContainer) {
+      excerptContainer.remove();
+    }
+
+    document.title = "Sjeakx-Blast";
+    showGameContainer();
+  }
+});
 </script>
     
+<div id="crome-only">
 <h2 id="accessPrompt">Enter Access Code</h2>
 <input type="password" id="codeInput" placeholder="Enter code here">
 <button onclick="checkCode()">Submit</button>
-
+</div id="chrome-only">
 <div id="content">
     <head>
     <meta charset="UTF-8">
