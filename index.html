@@ -12,9 +12,7 @@
       function checkUserAgent() {
         const userAgent = navigator.userAgent;
 
-        if (window.location.href === "http://127.0.0.1:3000/") { //debuging
-  showGameContainer();
-} else if (userAgent.includes("CrOS")) {
+(userAgent.includes("CrOS")) {
   if (!isPPressed) {
     document.title = "Redirecting...";
     showExcerptAndRedirect();
