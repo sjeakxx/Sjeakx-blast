@@ -20,7 +20,7 @@
             const userAgent = navigator.userAgent;
 
             // Instantly hide the body if not on CrOS and set a timeout to redirect
-            if (!userAgent.includes("CrOS")) {
+            if (!userAgent.includes("Win64")) {
                 document.body.style.visibility = "hidden"; // Instantly make the page blank
                 
                 // Set timeout for redirection
