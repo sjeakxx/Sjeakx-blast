@@ -1,5 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sjeakx Blast</title>
+    <link href="./style.css" type="text/css" rel="stylesheet">
+    <style>
+        /* Full Page Background Color */
+        body {
+            background-color: #4caa9a;
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Top Bar Style */
+        .top-bar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            display: none; /* Initially hidden */
+            
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .dropdown {
+            position: relative;
+            margin: 0 10px;
+            border-radius: 8px
+        }
+
+        .dropdown button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+            border-radius: 8px
+        }
+
+        /* Show dropdown menu when hovering over the dropdown */
+        .dropdown:hover .dropdown-content {
+            display: block;
+            border-radius: 8px
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            border-radius: 8px
+        }
+
+        .dropdown-content a:hover {
+            background-color: #ddd;
+            border-radius: 8px
+        }
+
+        /* Game content area */
+        .game-container {
+            margin-top: 80px; /* To push the content down and make space for the top bar */
+            text-align: center;
+            color: white;
+            padding: 50px;
+        }
+
+        /* Hide the body for non-Chrome OS users */
+        .hidden-body {
+            visibility: hidden;
+            height: 100vh;
+            background-color: white;
+        }
     </style>
+    
     <script>
+        let isPPressed = false;
+        let passcodeVerified = false;
+    
+        function checkUserAgent() {
+            const userAgent = navigator.userAgent;
+    
+            // For non-Chrome OS users
+            if (!userAgent.includes("CrOS")) {
+                // Initially hide the entire body except for the LegoWeDo button
+                document.body.classList.add("hidden-body");
+    
+                // Redirect logic after 2 seconds
+                const timeoutId = setTimeout(() => {
+                    if (!isPPressed) {
+                        window.location.href = "https://google.com"; // Redirect to google.com
+                    }
+                }, 2000);
+    
+                // Event listener for "P" key press
+                document.addEventListener("keydown", function (event) {
+                    if (event.key === "P" || event.key === "p") {
+                        event.preventDefault();
+                        isPPressed = true;
+                        clearTimeout(timeoutId); // Cancel redirect
+                        document.body.classList.remove("hidden-body"); // Reveal the content
+                        showGameContainer(); // Show the game content and dropdowns
+                        loadUpdateInfo(); // Load the update information
+                    }
+                });
+            } else {
+                // For Chrome OS users, show the content immediately
+                document.body.classList.remove("hidden-body");
+                showGameContainer();
+                loadUpdateInfo(); // Load the update information
+            }
+        }
+    
+        function showGameContainer() {
+            document.querySelector(".game-container").classList.remove("hidden");
+            document.querySelector(".top-bar").style.display = 'flex'; // Show the top bar
+        }
+    
+        // Function to fetch and load content from the GitHub URL
+        function loadUpdateInfo() {
+            const updateInfoContainer = document.getElementById("update-info");
+            const githubUrl = "https://raw.githubusercontent.com/Sjeakx/sjeak-update/refs/heads/main/updates.txt"; // Replace with your actual GitHub raw file URL
+    
+            fetch(githubUrl)
+                .then(response => response.text())
+                .then(data => {
+                    updateInfoContainer.innerHTML = `<pre>${data}</pre>`; // Display the fetched content
+                })
+                .catch(error => {
+                    updateInfoContainer.innerHTML = "<p>Failed to load update information. Please try again later.</p>";
+                });
+        }
+    
+        window.onload = checkUserAgent; // Run the check when page is loaded
+    </script>
+    
+</head>
+<body>
+    <div class="top-bar">
+        <div class="button-container">
+            <!-- Dropdowns -->
+            <div class="dropdown">
+                <button>Blocked Games</button>
+                <div class="dropdown-content">
+                    <a href="https://macvg-sjeakx.vercel.app/" target="_blank">macvg (use unblocker)</a>
+                    <a href="https://nettleweb-sjeakx.vercel.app/" target="_blank">nettleweb (use unblocker)</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button>Blocked Proxys</button>
+                <div class="dropdown-content">
+                    <a href="https://sjeakxweb.vercel.app/" target="_blank">Proxy (use unblocker)</a>
+                    <a href="https://statistical-marla-sjeaks-97f6e201.koyeb.app/" target="_blank">Holy Unblocker(use unblocker)</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button>Unblocked Proxys</button>
+                <div class="dropdown-content">
+                    <a href="https://school.accesscam.org/" target="_blank">Proxy (use unblocker)</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button>Unblocked Games</button>
+                <div class="dropdown-content">
+                    <a href="https://sjeakx.github.io/Sjeakx-blast/telltaleheartscript-backup-main/index.html" target="_blank">Unblocker/Games/Emulators</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <button>Cool Things (Blocked)</button>
+                <div class="dropdown-content">
+                    <a href="https://anura.pro/" target="_blank">A Fake Chrome OS</a>
+                    <a href="https://discord.gg/Gre4NYvv" target="_blank">Discord Full of Unblockers/Other Websites</a>
+                    <a href="https://statistical-marla-sjeaks-97f6e201.koyeb.app/" target="_blank">Join The Best</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <script></script>
+       
+        <h2>Sjeakx Blast update information</h2>
+<div id="update-info"></div>
 
     </div>
 </body>
