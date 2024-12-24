@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jumpscare</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #jumpscare {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://daniellarson.wiki/images/8/8d/Danielscreeching.png') no-repeat center center/cover;
+      z-index: 1000;
+    }
+
+    #jumpscare p {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 30px;
+      color: red;
+      text-shadow: 2px 2px 5px black;
+    }
+  </style>
+</head>
+<body>
+  <div id="jumpscare">
+    <p>danderson!!</p>
+  </div>
+
+  <audio id="scream" src="https://www.myinstants.com/media/sounds/scream.mp3"></audio>
+
+  <script>
+    console.log('Setting up automatic jumpscare trigger after 22 seconds');
+    setTimeout(() => {
+      console.log('22 seconds passed, triggering jumpscare');
+      const jumpscareElement = document.getElementById('jumpscare');
+      const screamAudio = document.getElementById('scream');
+
+      console.log('Displaying jumpscare element');
+      jumpscareElement.style.display = 'block';
+
+      console.log('Playing scream audio');
+      screamAudio.play().then(() => {
+        console.log('Scream audio played successfully');
+        setTimeout(() => {
+          console.log('Hiding jumpscare element and redirecting to Google');
+          jumpscareElement.style.display = 'none';
+          window.location.href = 'https://www.google.com';
+        }, 3000); // Jumpscare lasts for 3 seconds
+      }).catch(error => {
+        console.error('Error playing scream audio:', error);
+        console.log('Redirecting to Google due to audio error');
+        window.location.href = 'https://www.google.com';
+      });
+    }, 2200);
+  </script>
+</body>
+</html>
